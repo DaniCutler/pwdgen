@@ -2,29 +2,47 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var passwordLength;
-var confirmUppercase;
-var confirmLowercase;
-var confirmSpecial;
-var confirmNumbers;
+// function writePassword() {
+//   var password = generatePassword();
+function generatePassword(){
+  //values for variables
+var characterNumber = "0123456789";
+var includeUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var includeLowercase = "abcdefghijklmnopqrstuvwxyz";
+var includeSymbols = "!@#$%^&*()_-+?/{}[].,";
 
-
-//values for variables
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-var numbers = "1234567890";
-var symbols = "~!@#$%^&*()_+{}:?><;.,";
-
+const passwordLength = document.getElementById ("characterNumber")
 
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+let char ="";
+if (characterNumber.checked){
+  char += characterNumber;
+}
+if (includeUppercase.checked){
+  char += includeUppercase;
+}
+if (includeLowercase.checked){
+  char += includeLowercase;
+}
+if (includeSymbols.checked){
+  char += includeSymbols;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+  for (var i = 0; i < passwordLength; i++){
+    password = password +
+    char.charAt(Math.floor(Math.random()*
+    (char.length - 1)));
+  }
+  
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
+}      
+generateBtn.addEventListener("click", generatePassword);
+
+
+
+
+
+  
+ 
